@@ -34,6 +34,10 @@ public class Employee {
     private String cubeId;
     private Date orientationDate;
 
+    
+    //Stuff to do
+    //validate all setters based on what you think is valid
+    
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
