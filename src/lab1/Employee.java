@@ -41,7 +41,7 @@ public class Employee {
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.ssn = ssn;
+        this.setSsn(ssn);
     }
 
     public String getFirstName() {
@@ -62,6 +62,15 @@ public class Employee {
 
     public String getSsn() {
         return ssn;
+    }
+    
+    private void setSsn(String ssn){
+        if(ssn.length() != 9){
+            throw new IllegalArgumentException("The value is not 9 digits");
+        }
+        else{
+            this.ssn = ssn;
+        }
     }
 
     public boolean isMetWithHr() {
