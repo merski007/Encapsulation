@@ -36,6 +36,7 @@ public class Employee {
         this.ssn = ssn;
     }
 
+    //1
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     public void meetWithHrForBenefitAndSalryInfo() {
@@ -45,7 +46,8 @@ public class Employee {
         System.out.println(firstName + " " + lastName + " met with Hr on "
             + fmtDate);
     }
-
+    
+    //1
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.:
     public void meetDepartmentStaff() {
@@ -56,6 +58,7 @@ public class Employee {
             + fmtDate);
     }
 
+    //3
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
@@ -66,7 +69,7 @@ public class Employee {
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
             + fmtDate);
     }
-
+    //4
     // Assume this must be performed 4th. And assume that because employees
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
