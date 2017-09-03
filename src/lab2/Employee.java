@@ -33,7 +33,7 @@ public class Employee {
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.ssn = ssn;
+        this.setSsn(ssn);
     }
 
     //1
@@ -105,8 +105,13 @@ public class Employee {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
+    private void setSsn(String ssn){
+        if(ssn.length() != 9){
+            throw new IllegalArgumentException("The value is not 9 digits");
+        }
+        else{
+            this.ssn = ssn;
+        }
     }
 
     public boolean isMetWithHr() {
