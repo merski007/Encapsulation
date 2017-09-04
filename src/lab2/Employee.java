@@ -153,7 +153,12 @@ public class Employee {
 
     
     public void setCubeId(String cubeId) {
-        this.cubeId = cubeId;
+        if(cubeId == "A1" || cubeId == "A2" || cubeId == "A3"){
+            this.cubeId = cubeId;
+        }
+        else{
+            throw new IllegalArgumentException("The cube location does not exist");
+        }
     }
 
     public Date getOrientationDate() {
@@ -161,6 +166,6 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
-        DateUtilities orientationDate = new DateUtilities();
+        
         this.orientationDate = orientationDate;
     }}
