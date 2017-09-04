@@ -29,10 +29,12 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private Date startDate;
     
     DateUtilities date = new DateUtilities();
 
-    public Employee(String firstName, String lastName, String ssn) {
+    public Employee(Date startDate, String firstName, String lastName, String ssn) {
+        this.startDate = startDate;
         this.firstName = firstName;
         this.lastName = lastName;
         this.setSsn(ssn);
@@ -165,8 +167,17 @@ public class Employee {
     }
 
     private void setOrientationDate(Date orientationDate) {
+        if(orientationDate.before(orientationDate)){
+            
+        }
         this.orientationDate = orientationDate;
     }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+    
+    
     
     // NOTE: we are still violating SRP because we are using output statements
     // which is not a responsibility of this class. However, to keep things
