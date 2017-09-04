@@ -30,7 +30,7 @@ public class Employee {
     private String cubeId;
     private Date orientationDate;
     
-    //DateUtilities date = new DateUtilities();
+    DateUtilities date = new DateUtilities();
 
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
@@ -38,11 +38,14 @@ public class Employee {
         this.setSsn(ssn);
     }
     
-    public void newHireMeetings(String cubeId){
+    public void newHireMeetings(Date orientationDate, String cubeId){
+        this.setOrientationDate(orientationDate);
         this.meetWithHrForBenefitAndSalryInfo();
         this.meetDepartmentStaff();
         this.reviewDeptPolicies();
         this.moveIntoCubicle(cubeId);
+        
+        this.outputMessages();
     }
 
     //1
@@ -50,11 +53,6 @@ public class Employee {
     // would only do this once, upon being hired.
     private void meetWithHrForBenefitAndSalryInfo() {
         setMetWithHr(true);
-        
-        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        //String fmtDate = sdf.format(orientationDate);        
-        //System.out.println(firstName + " " + lastName + " met with Hr on "
-        //    + fmtDate);
     }
     
     //1
@@ -62,10 +60,6 @@ public class Employee {
     // would only do this once, upon being hired.:
     private void meetDepartmentStaff() {
         setMetDeptStaff(true);
-        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        //String fmtDate = sdf.format(orientationDate);        
-        //System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-        //    + fmtDate);
     }
 
     //3
@@ -74,11 +68,9 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         setReviewedDeptPolicies(true);
-        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        //String fmtDate = sdf.format(orientationDate);        
-        //System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-        //    + fmtDate);
+        reviewDeptPoliciesOutputs();
     }
+    
     //4
     // Assume this must be performed 4th. And assume that because employees
     // sometimes change office locations that this method may need to be called 
@@ -86,10 +78,7 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         setCubeId(cubeId);
         setMovedIn(true);
-        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        //String fmtDate = sdf.format(orientationDate);        
-        //System.out.println(firstName + " " + lastName + " moved into cubicle "
-        //        + cubeId + " on " + fmtDate);
+        moveIntoCubicleOutput();
     }
 
     public String getFirstName() {
@@ -98,8 +87,7 @@ public class Employee {
 
     // setter methods give the developer the power to control what data is
     // allowed through validation.
-    
-    public void setFirstName(String firstName) {
+    private void setFirstName(String firstName) {
        this.firstName = firstName;
     }
 
@@ -107,10 +95,11 @@ public class Employee {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    private void setLastName(String lastName) {
        this.lastName = lastName;
     }
 
+    //should i make this private??
     public String getSsn() {
         return ssn;
     }
@@ -162,7 +151,7 @@ public class Employee {
     }
 
     
-    public void setCubeId(String cubeId) {
+    private void setCubeId(String cubeId) {
         if(cubeId == "A1" || cubeId == "A2" || cubeId == "A3"){
             this.cubeId = cubeId;
         }
@@ -175,12 +164,39 @@ public class Employee {
         return orientationDate;
     }
 
-    public void setOrientationDate(Date orientationDate) {
+    private void setOrientationDate(Date orientationDate) {
         this.orientationDate = orientationDate;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);
-        
-        DateUtilities date = new DateUtilities();
-        this.orientationDate = date.getFormattedDate(orientationDate);
+    }
+    
+    // NOTE: we are still violating SRP because we are using output statements
+    // which is not a responsibility of this class. However, to keep things
+    // simple we'll use these as placeholders for real code that would be
+    // here if we spent more time on the simulation.
+    
+    private void meetWithHrForBenefitAndSalryInfoOutput() {    
+        System.out.println(firstName + " " + lastName + " met with Hr on "
+            + date.getFormattedDate(orientationDate));
+    }
+    
+    private void meetDepartmentStaffOutput() {    
+        System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
+            + date.getFormattedDate(orientationDate));
+    }
+    
+    private void reviewDeptPoliciesOutputs() {       
+        System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
+            + date.getFormattedDate(orientationDate));
+    }
+    
+    private void moveIntoCubicleOutput() {       
+        System.out.println(firstName + " " + lastName + " moved into cubicle "
+                + cubeId + " on " + date.getFormattedDate(orientationDate));
+    }
+    
+    private void outputMessages(){
+        meetWithHrForBenefitAndSalryInfoOutput();
+        meetDepartmentStaffOutput();
+        reviewDeptPoliciesOutputs();
+        moveIntoCubicleOutput();
     }
 }
