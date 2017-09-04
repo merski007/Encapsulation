@@ -29,33 +29,43 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    
+    //DateUtilities date = new DateUtilities();
 
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.setSsn(ssn);
     }
+    
+    public void newHireMeetings(String cubeId){
+        this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeId);
+    }
 
     //1
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         setMetWithHr(true);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
-        System.out.println(firstName + " " + lastName + " met with Hr on "
-            + fmtDate);
+        
+        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        //String fmtDate = sdf.format(orientationDate);        
+        //System.out.println(firstName + " " + lastName + " met with Hr on "
+        //    + fmtDate);
     }
     
     //1
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         setMetDeptStaff(true);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
-        System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + fmtDate);
+        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        //String fmtDate = sdf.format(orientationDate);        
+        //System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
+        //    + fmtDate);
     }
 
     //3
@@ -64,10 +74,10 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         setReviewedDeptPolicies(true);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
-        System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + fmtDate);
+        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        //String fmtDate = sdf.format(orientationDate);        
+        //System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
+        //    + fmtDate);
     }
     //4
     // Assume this must be performed 4th. And assume that because employees
@@ -76,10 +86,10 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         setCubeId(cubeId);
         setMovedIn(true);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
-        System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + fmtDate);
+        //SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        //String fmtDate = sdf.format(orientationDate);        
+        //System.out.println(firstName + " " + lastName + " moved into cubicle "
+        //        + cubeId + " on " + fmtDate);
     }
 
     public String getFirstName() {
@@ -166,6 +176,11 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
-        
         this.orientationDate = orientationDate;
-    }}
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        String fmtDate = sdf.format(orientationDate);
+        
+        DateUtilities date = new DateUtilities();
+        this.orientationDate = date.getFormattedDate(orientationDate);
+    }
+}
