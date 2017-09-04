@@ -120,6 +120,9 @@ public class Employee {
 
     // boolean parameters need no validation
     public void setMetWithHr(boolean metWithHr) {
+        if(movedIn != true || movedIn != false){
+            throw new IllegalArgumentException("value must be true or false");
+        }    
         this.metWithHr = metWithHr;
     }
 
@@ -128,6 +131,9 @@ public class Employee {
     }
 
     public void setMetDeptStaff(boolean metDeptStaff) {
+        if(movedIn != true || movedIn != false){
+            throw new IllegalArgumentException("value must be true or false");
+        }
         this.metDeptStaff = metDeptStaff;
     }
 
@@ -136,6 +142,9 @@ public class Employee {
     }
 
     public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+                if(movedIn != true || movedIn != false){
+            throw new IllegalArgumentException("value must be true or false");
+        }
         this.reviewedDeptPolicies = reviewedDeptPolicies;
     }
 
@@ -144,6 +153,9 @@ public class Employee {
     }
 
     public void setMovedIn(boolean movedIn) {
+        if(movedIn != true || movedIn != false){
+            throw new IllegalArgumentException("value must be true or false");
+        }
         this.movedIn = movedIn;
     }
 
