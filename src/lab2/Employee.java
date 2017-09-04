@@ -40,7 +40,7 @@ public class Employee {
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     public void meetWithHrForBenefitAndSalryInfo() {
-        metWithHr = true;
+        setMetWithHr(true);
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Hr on "
@@ -51,7 +51,7 @@ public class Employee {
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.:
     public void meetDepartmentStaff() {
-        metDeptStaff = true;
+        setMetDeptStaff(true);
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
@@ -63,7 +63,7 @@ public class Employee {
     // policies may change that this method may need to be called 
     // independently from other classes.
     public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
+        setReviewedDeptPolicies(true);
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
@@ -74,8 +74,8 @@ public class Employee {
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
-        this.cubeId = cubeId;
-        this.movedIn = true;
+        setCubeId(cubeId);
+        setMovedIn(true);
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
@@ -119,10 +119,7 @@ public class Employee {
     }
 
     // boolean parameters need no validation
-    public void setMetWithHr(boolean metWithHr) {
-        if(movedIn != true || movedIn != false){
-            throw new IllegalArgumentException("value must be true or false");
-        }    
+    private void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
     }
 
@@ -130,10 +127,7 @@ public class Employee {
         return metDeptStaff;
     }
 
-    public void setMetDeptStaff(boolean metDeptStaff) {
-        if(movedIn != true || movedIn != false){
-            throw new IllegalArgumentException("value must be true or false");
-        }
+    private void setMetDeptStaff(boolean metDeptStaff) {
         this.metDeptStaff = metDeptStaff;
     }
 
@@ -142,9 +136,6 @@ public class Employee {
     }
 
     public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
-                if(movedIn != true || movedIn != false){
-            throw new IllegalArgumentException("value must be true or false");
-        }
         this.reviewedDeptPolicies = reviewedDeptPolicies;
     }
 
@@ -153,9 +144,6 @@ public class Employee {
     }
 
     public void setMovedIn(boolean movedIn) {
-        if(movedIn != true || movedIn != false){
-            throw new IllegalArgumentException("value must be true or false");
-        }
         this.movedIn = movedIn;
     }
 
