@@ -161,5 +161,6 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
+        DateUtilities orientationDate = new DateUtilities();
         this.orientationDate = orientationDate;
     }}
