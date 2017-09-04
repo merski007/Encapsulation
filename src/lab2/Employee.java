@@ -167,8 +167,8 @@ public class Employee {
     }
 
     private void setOrientationDate(Date orientationDate) {
-        if(orientationDate.before(orientationDate)){
-            
+        if(orientationDate.before(startDate)){
+            throw new IllegalArgumentException("Employee has not started working yet.");
         }
         this.orientationDate = orientationDate;
     }
