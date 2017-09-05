@@ -74,8 +74,9 @@ public class Employee {
         are called. Order isn't always an issue, but here it obviously is, which
         may be an important requirement.
     */
-    public void doFirstTimeOrientation(String cubeId) {
-        orientationDate = new Date();
+    public void doFirstTimeOrientation(String cubeId, Date orientationDate) {
+        setOrientationDate(orientationDate);
+        //orientationDate = new Date();
         meetWithHrForBenefitAndSalryInfo();
         meetDepartmentStaff();
         reviewDeptPolicies();
