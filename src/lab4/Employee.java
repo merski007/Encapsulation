@@ -82,7 +82,8 @@ public class Employee {
         may be an important requirement.
     */
     public void doFirstTimeOrientation(String cubeId) {
-        orientationDate = new Date();
+        Date date = new Date();
+        setOrientationDate(date);
         meetWithHrForBenefitAndSalryInfo();
         meetDepartmentStaff();
         reviewDeptPolicies();
@@ -98,8 +99,9 @@ public class Employee {
     // and should only be called as part of the larger task of:
     // doFirtTimeOrientation()
     private void meetWithHrForBenefitAndSalryInfo() {
-        metWithHr = true;
-        reportService.addData(firstName + " " + lastName + " met with Hr on "
+        //metWithHr = true;
+        setMetWithHr(true);
+        reportService.addData(getFirstName() + " " + getLastName() + " met with Hr on "
             + getFormattedDate() + CRLF);
     }
 
@@ -109,8 +111,9 @@ public class Employee {
     // and should only be called as part of the larger task of:
     // doFirtTimeOrientation()
     private void meetDepartmentStaff() {
-        metDeptStaff = true;
-        reportService.addData(firstName + " " + lastName + " met with Dept. Staff on "
+        //metDeptStaff = true;
+        setMetDeptStaff(true);
+        reportService.addData(getFirstName() + " " + getLastName() + " met with Dept. Staff on "
             + getFormattedDate() + CRLF);
     }
 
@@ -118,8 +121,9 @@ public class Employee {
     // policies may change that this method may need to be called 
     // independently from other classes.
     public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
-        reportService.addData(firstName + " " + lastName + " reviewed Dept policies on "
+        //reviewedDeptPolicies = true;
+        setReviewedDeptPolicies(true);
+        reportService.addData(getFirstName() + " " + getLastName() + " reviewed Dept policies on "
             + getFormattedDate() + CRLF);
     }
 
@@ -127,10 +131,12 @@ public class Employee {
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
-        this.cubeId = cubeId;
-        this.movedIn = true;
-        reportService.addData(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + getFormattedDate() + CRLF);
+        //this.cubeId = cubeId;
+        setCubeId(cubeId);
+        //this.movedIn = true;
+        setMovedIn(true);
+        reportService.addData(getFirstName() + " " + getLastName() + " moved into cubicle "
+                + getCubeId() + " on " + getFormattedDate() + CRLF);
     }
 
     public String getFirstName() {
