@@ -90,7 +90,10 @@ public class Employee {
     // setter methods give the developer the power to control what data is
     // allowed through validation.
     private void setFirstName(String firstName) {
-       this.firstName = firstName;
+       if(firstName == null || firstName.isEmpty()) {
+            throw new IllegalArgumentException("first name is required");
+        }
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -98,7 +101,10 @@ public class Employee {
     }
 
     private void setLastName(String lastName) {
-       this.lastName = lastName;
+       if(firstName == null || firstName.isEmpty()) {
+            throw new IllegalArgumentException("last name is required");
+        }
+        this.lastName = lastName;
     }
 
     //should i make this private??
