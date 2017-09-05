@@ -133,7 +133,7 @@ public class Employee {
     // allowed through validation. Throwing ane exception is the best
     // practice when validation fails. Don't do a System.out.println()
     // to display an error message -- not the job of this class!
-    public void setFirstName(String firstName) {
+    private void setFirstName(String firstName) {
         if(firstName == null || firstName.isEmpty()) {
             throw new IllegalArgumentException("first name is required");
         }
@@ -144,9 +144,9 @@ public class Employee {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    private void setLastName(String lastName) {
         if(lastName == null || lastName.isEmpty()) {
-            System.out.println("last name is required");
+            throw new IllegalArgumentException("last name is required");
         }
         this.lastName = lastName;
     }
@@ -155,9 +155,9 @@ public class Employee {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    private void setSsn(String ssn) {
         if(ssn == null || ssn.length() < 9 || ssn.length() > 11) {
-            System.out.println("ssn is required and must be "
+            throw new IllegalArgumentException("ssn is required and must be "
                     + "between 9 and 11 characters (if hyphens are used)");
         }
         this.ssn = ssn;
@@ -201,9 +201,9 @@ public class Employee {
     }
 
     
-    public void setCubeId(String cubeId) {
+    private void setCubeId(String cubeId) {
         if(cubeId == null || cubeId.isEmpty()) {
-            System.out.println("cube id is required");
+            throw new IllegalArgumentException("cube id is required");
         }
         this.cubeId = cubeId;
     }
@@ -212,9 +212,9 @@ public class Employee {
         return orientationDate;
     }
 
-    public void setOrientationDate(Date orientationDate) {
+    private void setOrientationDate(Date orientationDate) {
         if(orientationDate == null) {
-            System.out.println("orientationDate is required");
+            throw new IllegalArgumentException("orientationDate is required");
         }
         this.orientationDate = orientationDate;
     }
