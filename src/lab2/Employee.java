@@ -38,6 +38,8 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.setSsn(ssn);
+        //when peforming method encapsulation, do not use 'this.', only call the metohd
+        //example, setSsn(ssn);
     }
     
     public void newHireMeetings(Date orientationDate, String cubeId){
@@ -58,7 +60,7 @@ public class Employee {
     }
     
     //1
-    // Assume this must be performed first, and assume that an employee
+    // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
     private void meetDepartmentStaff() {
         setMetDeptStaff(true);
